@@ -10,6 +10,8 @@ const PlaidLink = ({ user, variant }: PlaidLinkProps) => {
 
   const [token, setToken] = useState('');
 
+
+  //provide a callback func with an arr for when u wan tthat func to be called
   useEffect(() => {
     const getLinkToken = async () => {
       const data = await createLinkToken(user);
@@ -20,8 +22,16 @@ const PlaidLink = ({ user, variant }: PlaidLinkProps) => {
     getLinkToken();
   }, [user]);
 
+
+  //we dont wanna call it again and again so its a callback which only executes on success
+  //Its a hook
+  //PlaidLinkOnSuccess: this is a type
+
   const onSuccess = useCallback<PlaidLinkOnSuccess>(async (public_token: string) => {
     await exchangePublicToken({
+
+      //Object
+
       publicToken: public_token,
       user,
     })

@@ -29,6 +29,7 @@ const AuthForm = ({ type }: { type: string }) => {
   const router = useRouter();
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+ // const loggedInUser=await getLoggedInUser();
 
   const formSchema = authFormSchema(type);
 
@@ -57,7 +58,7 @@ const AuthForm = ({ type }: { type: string }) => {
             state: data.state!,
             postalCode: data.postalCode!,
             dateOfBirth: data.dateOfBirth!,
-            ssn: data.ssn!,
+            //ssn: data.ssn!,
             email: data.email,
             password: data.password
           }
@@ -134,7 +135,7 @@ const AuthForm = ({ type }: { type: string }) => {
                   </div>
                   <div className="flex gap-4">
                     <CustomInput control={form.control} name='dateOfBirth' label="Date of Birth" placeholder='YYYY-MM-DD' />
-                    <CustomInput control={form.control} name='ssn' label="SSN" placeholder='Example: 1234' />
+                    {/* <CustomInput control={form.control} name='ssn' label="SSN" placeholder='Enter your ssn' /> */}
                   </div>
                 </>
               )}
